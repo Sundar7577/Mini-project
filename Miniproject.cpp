@@ -1,29 +1,30 @@
-#include<iostream>
 #include<stdlib.h>
-#include<string>
-#include<bits/stdc++.h>
+#include<cstring>
+#include<iostream>
+
 using namespace std;
 struct node
 {
-	int data;
+	char data[100];
 	struct node *next;
-	
 };
+struct node *front=0;
 struct node *rear=0;
-struct node  *front=0;
+
 void enqueue()
 {
 	struct node *newnode;
-	string name;
-	cout<<"Enter the value you want to insert\n";
-	getline(cin,name);
-	newnode = (struct node *)malloc(sizeof(struct node));
-	newnode->data=stoi(name);
+		newnode=(struct node*)malloc(sizeof(struct node));
+	char name[100];
+
+//	gets(name);
+	cin>>name;
+
+	strcpy(newnode->data,name);
 	newnode->next = 0;
 	if(front==0 && rear ==0)
 	{
-		front=rear;
-		rear=newnode;
+		front=rear=newnode;
 	}
 	else
 	{
@@ -31,60 +32,63 @@ void enqueue()
 		rear = newnode;
 	}
 }
+
 void dequeue()
 {
 	struct node *temp;
 	temp = front;
 	if(front==0 && rear==0)
 	{
-		cout<<"Queue is empty\n";
+		printf("Queue is empty\n");
 	}
 	else if(front == rear)
 	{
-		cout<<"Dequeued element is "<<front->data;
+		printf("Dequeued element is %s",front->data);
 		front = front->next;
 		free(temp);
 		front =rear = 0;
 	}
 	else
 	{
-		cout<<"Dequeued element is "<<front->data;
+		printf("Dequeued element is %s",front->data);
 		front = front->next;
 		free(temp);
 	}
 }
+
 void display()
 {
 	struct node * temp;
 	if(front==0 && rear == 0)
 	{
-		cout<<"Queue is empty\n";
+		printf("Queue is empty\n");
 	}
 	else
 	{
 		temp = front;
-		cout<<"Your Queue is:\n";
+		printf("Your Queue is:\n");
 		while(temp!=0)
 		{
-			cout<<"\t",temp->data;
+			printf("%s\n",temp->data);
 			temp = temp->next;
 		}
-	}}
-	void isEmpty()
+	}
+}
+
+void isEmpty()
 {
 	if(front==0 && rear ==0)
 	{
-		cout<<"Queue is empty\n";
+		printf("Queue is empty\n");
 	}
 	else
 	{
-		cout<<"Queue is not empty\n";
+		printf("Queue is not empty\n");
 	}
 }
 
 int main()
 {
-	
 	int choice;
 	while(1)
 	{
@@ -117,4 +121,3 @@ int main()
 	}
 	return 0;
 }
-
