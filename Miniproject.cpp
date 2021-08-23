@@ -19,7 +19,7 @@ void enqueue()
 
 //	gets(name);
 	cin>>name;
-
+    //scanf("%s",name);
 	strcpy(newnode->data,name);
 	newnode->next = 0;
 	if(front==0 && rear ==0)
@@ -41,16 +41,16 @@ void dequeue()
 	{
 		printf("Queue is empty\n");
 	}
-	else if(front == rear)
+	else if (front == rear)
 	{
-		printf("Dequeued element is %s",front->data);
+		printf(" %s",front->data);
 		front = front->next;
 		free(temp);
 		front =rear = 0;
 	}
 	else
 	{
-		printf("Dequeued element is %s",front->data);
+		printf("%s",front->data);
 		front = front->next;
 		free(temp);
 	}
@@ -87,17 +87,26 @@ void isEmpty()
 	}
 }
 
+
+void show()
+{
+	printf("Please ,now the turn is:");
+	dequeue();
+	
+}
+
 int main()
 {
 	int choice;
 	while(1)
 	{
 		printf("\n\tEnter the choice:\n");
-		printf("1-Enqueue Operation\n");
-		printf("2-Dequeue Operation\n");
-		printf("3-Display\n");
+		printf("1-Please register your name in queue\n");
+		printf("2-if you have already taken services you can remove your name\n");
+		printf("3-Display your name to check your name in the list \n");
 		printf("4-To check whether the queue is empty or not\n");
-		printf("5-Exit\n");
+		printf("5-Check whose turn is now\n");
+		printf("6-Exit\n");
 		scanf("%d",&choice);
 		switch(choice)
 		{
@@ -114,6 +123,10 @@ int main()
 				isEmpty();
 				break;
 			case 5:
+				show();
+				break;
+			case 6:
+				
 				exit(0);
 			default:
 				printf("Invalid Choice\n");
